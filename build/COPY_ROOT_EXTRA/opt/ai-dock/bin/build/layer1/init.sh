@@ -9,6 +9,8 @@ PYTHON_PACKAGES=(
 
 NODES=(
     #"https://github.com/ltdrdata/ComfyUI-Manager"
+    "https://github.com/Gourieff/comfyui-reactor-node"
+    "https://github.com/WASasquatch/was-node-suite-comfyui"
 )
 
 CHECKPOINT_MODELS=(
@@ -54,6 +56,10 @@ CONTROLNET_MODELS=(
     #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_style-fp16.safetensors"
 )
 
+UPSCALE_MODELS=(
+    "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth"
+)
+
 ### DO NOT EDIT BELOW HERE UNLESS YOU KNOW WHAT YOU ARE DOING ###
 
 function build_extra_start() {
@@ -74,6 +80,9 @@ function build_extra_start() {
     build_extra_get_models \
         "/opt/storage/stable_diffusion/models/esrgan" \
         "${ESRGAN_MODELS[@]}"
+    build_extra_get_models \
+        "/opt/ComfyUI/models/upscale_models" \
+        "${UPSCALE_MODELS[@]}"
      
     cd /opt/ComfyUI && \
     micromamba run -n comfyui -e LD_PRELOAD=libtcmalloc.so python main.py \
@@ -92,6 +101,7 @@ function build_extra_get_nodes() {
         dir="${repo##*/}"
         path="/opt/ComfyUI/custom_nodes/${dir}"
         requirements="${path}/requirements.txt"
+        install="${path}/install.py"
         if [[ -d $path ]]; then
             if [[ ${AUTO_UPDATE,,} != "false" ]]; then
                 printf "Updating node: %s...\n" "${repo}"
@@ -105,6 +115,10 @@ function build_extra_get_nodes() {
             git clone "${repo}" "${path}" --recursive
             if [[ -e $requirements ]]; then
                 micromamba -n comfyui run ${PIP_INSTALL} -r "${requirements}"
+            fi
+            if [[ -e $install ]]; then
+                printf "Installing node: %s...\n" "${repo}"
+                micromamba -n comfyui run python "${install}"
             fi
         fi
     done
