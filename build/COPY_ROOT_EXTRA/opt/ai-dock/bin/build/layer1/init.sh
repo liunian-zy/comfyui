@@ -70,6 +70,10 @@ FACEDETECTION_MODELS=(
     "https://github.com/sczhou/CodeFormer/releases/download/v0.1.0/yolov5n-face.pth",
     "https://github.com/xinntao/facexlib/releases/download/v0.1.0/detection_Resnet50_Final.pth",
     "https://github.com/xinntao/facexlib/releases/download/v0.1.0/detection_mobilenet0.25_Final.pth"
+    "https://github.com/sczhou/CodeFormer/releases/download/v0.1.0/parsing_parsenet.pth"
+)
+
+INSIGHTFACE_MODELS=(
 )
 ### DO NOT EDIT BELOW HERE UNLESS YOU KNOW WHAT YOU ARE DOING ###
 

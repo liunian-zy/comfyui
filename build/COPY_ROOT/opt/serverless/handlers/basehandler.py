@@ -15,7 +15,8 @@ class BaseHandler:
     ENDPOINT_HISTORY="http://127.0.0.1:18188/history"
     INPUT_DIR=f"{os.environ.get('WORKSPACE')}/ComfyUI/input/"
     OUTPUT_DIR=f"{os.environ.get('WORKSPACE')}/ComfyUI/output/"
-    
+    OUTPUT_DIR_SELF=f"/opt/ComfyUI/output/"
+
     request_id = None
     comfyui_job_id = None
     
@@ -74,12 +75,18 @@ class BaseHandler:
         if existing_file:
             return os.path.basename(existing_file)
         else:
-            return os.path.basename(Network.download_file(
+            return Network.download_file(
                 url, 
                 self.get_input_dir(), 
                 self.request_id
                     )
-                )
+
+            # return os.path.basename(Network.download_file(
+            #     url,
+            #     self.get_input_dir(),
+            #     self.request_id
+            #         )
+            #     )
 
     def is_server_ready(self):
         try:
@@ -157,14 +164,12 @@ class BaseHandler:
                 for image in outputs[item]["images"]:
                     if "type" in image and image["type"] == "temp":
                         continue
-                    original_path = f"{self.OUTPUT_DIR}{image['subfolder']}/{image['filename']}"
+                    original_path = f"{self.OUTPUT_DIR_SELF}{image['subfolder']}/{image['filename']}"
                     new_path = f"{custom_output_dir}/{image['filename']}"
                     # Handle duplicated request where output file is not re-generated
                     if os.path.islink(original_path):
                         shutil.copyfile(os.path.realpath(original_path), new_path)
                     else:
-                        print('sleep.....')
-                        time.sleep(10)
                         os.rename(original_path, new_path)
                         os.symlink(new_path, original_path)
                     key = f"{self.request_id}/{image['filename']}"
