@@ -163,6 +163,8 @@ class BaseHandler:
                     if os.path.islink(original_path):
                         shutil.copyfile(os.path.realpath(original_path), new_path)
                     else:
+                        print('sleep.....')
+                        time.sleep(10)
                         os.rename(original_path, new_path)
                         os.symlink(new_path, original_path)
                     key = f"{self.request_id}/{image['filename']}"

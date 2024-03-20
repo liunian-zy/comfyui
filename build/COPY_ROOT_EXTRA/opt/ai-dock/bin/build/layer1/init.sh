@@ -60,6 +60,17 @@ UPSCALE_MODELS=(
     "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth"
 )
 
+FACE_RESTORE_MODELS=(
+    "https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/GFPGANv1.3.pth",
+    "https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/GFPGANv1.4.pth",
+    "https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/codeformer-v0.1.0.pth"
+)
+FACEDETECTION_MODELS=(
+    "https://github.com/sczhou/CodeFormer/releases/download/v0.1.0/yolov5l-face.pth",
+    "https://github.com/sczhou/CodeFormer/releases/download/v0.1.0/yolov5n-face.pth",
+    "https://github.com/xinntao/facexlib/releases/download/v0.1.0/detection_Resnet50_Final.pth",
+    "https://github.com/xinntao/facexlib/releases/download/v0.1.0/detection_mobilenet0.25_Final.pth"
+)
 ### DO NOT EDIT BELOW HERE UNLESS YOU KNOW WHAT YOU ARE DOING ###
 
 function build_extra_start() {
@@ -83,6 +94,12 @@ function build_extra_start() {
     build_extra_get_models \
         "/opt/ComfyUI/models/upscale_models" \
         "${UPSCALE_MODELS[@]}"
+    build_extra_get_models \
+        "/opt/ComfyUI/models/facedetection" \
+        "${FACEDETECTION_MODELS[@]}"
+    build_extra_get_models \
+        "/opt/ComfyUI/models/facerestore_models" \
+        "${FACE_RESTORE_MODELS[@]}"
      
     cd /opt/ComfyUI && \
     micromamba run -n comfyui -e LD_PRELOAD=libtcmalloc.so python main.py \
