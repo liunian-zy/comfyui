@@ -73,7 +73,7 @@ class BaseHandler:
             Network.get_url_hash(url)
         )
         if existing_file:
-            return os.path.basename(existing_file)
+            return existing_file
         else:
             return Network.download_file(
                 url, 
@@ -157,7 +157,7 @@ class BaseHandler:
             "timings": {}
         }
         
-        custom_output_dir = f"{self.OUTPUT_DIR}{self.request_id}"
+        custom_output_dir = f"{self.OUTPUT_DIR_SELF}{self.request_id}"
         os.makedirs(custom_output_dir, exist_ok = True)
         for item in outputs:
             if "images" in outputs[item]:
