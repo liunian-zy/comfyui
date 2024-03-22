@@ -44,6 +44,8 @@ ESRGAN_MODELS=(
 )
 
 CONTROLNET_MODELS=(
+   "https://static.cjgt.me/comfyui/models/diffusion_pytorch_model.safetensors"
+
     #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_canny-fp16.safetensors"
     #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_depth-fp16.safetensors"
     #"https://huggingface.co/kohya-ss/ControlNet-diff-modules/resolve/main/diff_control_sd15_depth_fp16.safetensors"
@@ -96,10 +98,15 @@ INSIGHTFACE_MODELS=(
     "https://static.cjgt.me/comfyui/models/antelopev2.zip"
     "https://static.cjgt.me/comfyui/models/buffalo_l.zip"
 )
+INSIGHTFACE_MODELS_NOZIP=(
+    "https://static.cjgt.me/comfyui/models/inswapper_128.onnx"
+)
+SAM_MODELS=(
+    "https://static.cjgt.me/comfyui/models/sam_vit_b_01ec64.pth"
+)
 ### DO NOT EDIT BELOW HERE UNLESS YOU KNOW WHAT YOU ARE DOING ###
 
 function build_extra_start() {
-    build_extra_get_nodes
     build_extra_install_python_packages
 #    build_extra_get_models \
 #        "/opt/storage/stable_diffusion/models/ckpt" \
@@ -107,9 +114,9 @@ function build_extra_start() {
 #    build_extra_get_models \
 #        "/opt/storage/stable_diffusion/models/lora" \
 #        "${LORA_MODELS[@]}"
-#    build_extra_get_models \
-#        "/opt/storage/stable_diffusion/models/controlnet" \
-#        "${CONTROLNET_MODELS[@]}"
+    build_extra_get_models \
+        "/opt/ComfyUI/models/controlnet" \
+        "${CONTROLNET_MODELS[@]}"
 #    build_extra_get_models \
 #        "/opt/storage/stable_diffusion/models/vae" \
 #        "${VAE_MODELS[@]}"
@@ -126,7 +133,7 @@ function build_extra_start() {
         "/opt/ComfyUI/models/facerestore_models" \
         "${FACE_RESTORE_MODELS[@]}"
     build_extra_get_models \
-        "/opt/ComfyUI/models/VAE" \
+        "/opt/ComfyUI/models/vae" \
         "${VAE_MODELS[@]}"
     build_extra_get_models \
         "/opt/ComfyUI/models/checkpoints" \
@@ -135,11 +142,18 @@ function build_extra_start() {
         "/opt/ComfyUI/models/instantid" \
         "${INSTANTID_MODELS[@]}"
     build_extra_get_models \
-        "/opt/ComfyUI/models/lora" \
+        "/opt/ComfyUI/models/loras" \
         "${LORA_MODELS[@]}"
+    build_extra_get_models \
+        "/opt/ComfyUI/models/sams" \
+        "${SAM_MODELS[@]}"
     download_insightface_models \
         "/opt/ComfyUI/models/insightface/models" \
         "${INSIGHTFACE_MODELS[@]}"
+    build_extra_get_models \
+        "/opt/ComfyUI/models/insightface" \
+        "${INSIGHTFACE_MODELS_NOZIP[@]}"
+    build_extra_get_nodes
 
     cd /opt/ComfyUI && \
     micromamba run -n comfyui -e LD_PRELOAD=libtcmalloc.so python main.py \
