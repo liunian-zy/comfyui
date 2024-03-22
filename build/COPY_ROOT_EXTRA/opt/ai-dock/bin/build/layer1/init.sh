@@ -11,17 +11,24 @@ NODES=(
     #"https://github.com/ltdrdata/ComfyUI-Manager"
     "https://github.com/Gourieff/comfyui-reactor-node"
     "https://github.com/WASasquatch/was-node-suite-comfyui"
+    "https://github.com/ltdrdata/ComfyUI-Impact-Pack"
+    "https://github.com/Stability-AI/stability-ComfyUI-nodes"
+    "https://github.com/TripleHeadedMonkey/ComfyUI_MileHighStyler"
+    "https://github.com/Fannovel16/comfyui_controlnet_aux"
+    "https://github.com/chrisgoringe/cg-use-everywhere"
+    "https://github.com/liunian-zy/ComfyUI-CLIPSeg"
+    "https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes"
+    "https://github.com/cubiq/ComfyUI_InstantID"
+    "https://github.com/Derfuu/Derfuu_ComfyUI_ModdedNodes"
+    "https://github.com/sipherxyz/comfyui-art-venture"
 )
 
-CHECKPOINT_MODELS=(
-    #"https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.ckpt"
-    #"https://huggingface.co/stabilityai/stable-diffusion-2-1/resolve/main/v2-1_768-ema-pruned.ckpt"
-    #"https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors"
-    #"https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/resolve/main/sd_xl_refiner_1.0.safetensors"
-)
 
 LORA_MODELS=(
     #"https://civitai.com/api/download/models/16576"
+    "https://static.cjgt.me/comfyui/models/beauty face_v1.safetensors"
+    "https://static.cjgt.me/comfyui/models/leosamsFilmgirlUltra_velvia30Lora.safetensors"
+
 )
 
 VAE_MODELS=(
@@ -57,44 +64,58 @@ CONTROLNET_MODELS=(
 )
 
 UPSCALE_MODELS=(
-    "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth"
+    "https://static.cjgt.me/comfyui/models/RealESRGAN_x4plus.pth"
 )
 
 FACE_RESTORE_MODELS=(
-    "https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/GFPGANv1.3.pth",
-    "https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/GFPGANv1.4.pth",
-    "https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/codeformer-v0.1.0.pth"
+    "https://static.cjgt.me/comfyui/models/GFPGANv1.3.pth"
+    "https://static.cjgt.me/comfyui/models/GFPGANv1.4.pth"
+    "https://static.cjgt.me/comfyui/models/codeformer-v0.1.0.pth"
 )
 FACEDETECTION_MODELS=(
-    "https://github.com/sczhou/CodeFormer/releases/download/v0.1.0/yolov5l-face.pth",
-    "https://github.com/sczhou/CodeFormer/releases/download/v0.1.0/yolov5n-face.pth",
-    "https://github.com/xinntao/facexlib/releases/download/v0.1.0/detection_Resnet50_Final.pth",
-    "https://github.com/xinntao/facexlib/releases/download/v0.1.0/detection_mobilenet0.25_Final.pth"
-    "https://github.com/sczhou/CodeFormer/releases/download/v0.1.0/parsing_parsenet.pth"
+    "https://static.cjgt.me/comfyui/models/yolov5l-face.pth"
+    "https://static.cjgt.me/comfyui/models/yolov5n-face.pth"
+    "https://static.cjgt.me/comfyui/models/detection_Resnet50_Final.pth"
+    "https://static.cjgt.me/comfyui/models/detection_mobilenet0.25_Final.pth"
+    "https://static.cjgt.me/comfyui/models/parsing_parsenet.pth"
 )
 
+
+VAE_MODELS=(
+#  "https://civitai.com/api/download/models/333245?type=Model&format=SafeTensor"
+    "https://static.cjgt.me/comfyui/models/sdxlVAE_sdxlVAE.safetensors"
+)
+CHECKPOINT_MODELS=(
+#  "https://civitai.com/api/download/models/273102"
+   "https://static.cjgt.me/comfyui/models/turbovisionxlSuperFastXLBasedOnNew_tvxlV431Bakedvae.safetensors"
+)
+INSTANTID_MODELS=(
+   "https://static.cjgt.me/comfyui/models/ip-adapter.bin"
+)
 INSIGHTFACE_MODELS=(
+    "https://static.cjgt.me/comfyui/models/antelopev2.zip"
+    "https://static.cjgt.me/comfyui/models/buffalo_l.zip"
 )
 ### DO NOT EDIT BELOW HERE UNLESS YOU KNOW WHAT YOU ARE DOING ###
 
 function build_extra_start() {
     build_extra_get_nodes
     build_extra_install_python_packages
-    build_extra_get_models \
-        "/opt/storage/stable_diffusion/models/ckpt" \
-        "${CHECKPOINT_MODELS[@]}"
-    build_extra_get_models \
-        "/opt/storage/stable_diffusion/models/lora" \
-        "${LORA_MODELS[@]}"
-    build_extra_get_models \
-        "/opt/storage/stable_diffusion/models/controlnet" \
-        "${CONTROLNET_MODELS[@]}"
-    build_extra_get_models \
-        "/opt/storage/stable_diffusion/models/vae" \
-        "${VAE_MODELS[@]}"
-    build_extra_get_models \
-        "/opt/storage/stable_diffusion/models/esrgan" \
-        "${ESRGAN_MODELS[@]}"
+#    build_extra_get_models \
+#        "/opt/storage/stable_diffusion/models/ckpt" \
+#        "${CHECKPOINT_MODELS[@]}"
+#    build_extra_get_models \
+#        "/opt/storage/stable_diffusion/models/lora" \
+#        "${LORA_MODELS[@]}"
+#    build_extra_get_models \
+#        "/opt/storage/stable_diffusion/models/controlnet" \
+#        "${CONTROLNET_MODELS[@]}"
+#    build_extra_get_models \
+#        "/opt/storage/stable_diffusion/models/vae" \
+#        "${VAE_MODELS[@]}"
+#    build_extra_get_models \
+#        "/opt/storage/stable_diffusion/models/esrgan" \
+#        "${ESRGAN_MODELS[@]}"
     build_extra_get_models \
         "/opt/ComfyUI/models/upscale_models" \
         "${UPSCALE_MODELS[@]}"
@@ -104,7 +125,22 @@ function build_extra_start() {
     build_extra_get_models \
         "/opt/ComfyUI/models/facerestore_models" \
         "${FACE_RESTORE_MODELS[@]}"
-     
+    build_extra_get_models \
+        "/opt/ComfyUI/models/VAE" \
+        "${VAE_MODELS[@]}"
+    build_extra_get_models \
+        "/opt/ComfyUI/models/checkpoints" \
+        "${CHECKPOINT_MODELS[@]}"
+    build_extra_get_models \
+        "/opt/ComfyUI/models/instantid" \
+        "${INSTANTID_MODELS[@]}"
+    build_extra_get_models \
+        "/opt/ComfyUI/models/lora" \
+        "${LORA_MODELS[@]}"
+    download_insightface_models \
+        "/opt/ComfyUI/models/insightface/models" \
+        "${INSIGHTFACE_MODELS[@]}"
+
     cd /opt/ComfyUI && \
     micromamba run -n comfyui -e LD_PRELOAD=libtcmalloc.so python main.py \
         --cpu \
@@ -170,6 +206,25 @@ function build_extra_get_models() {
 # Download from $1 URL to $2 file path
 function build_extra_download() {
     wget -qnc --content-disposition --show-progress -e dotbytes="${3:-4M}" -P "$2" "$1"
+}
+
+function download_insightface_models() {
+    if [[ -n $2 ]]; then
+        dir="$1"
+        mkdir -p "$dir"
+        shift
+        arr=("$@")
+
+        printf "Downloading %s model(s) to %s...\n" "${#arr[@]}" "$dir"
+        for url in "${arr[@]}"; do
+            printf "Downloading: %s\n" "${url}"
+            build_extra_download "${url}" "${dir}"
+            # unzip
+            unzip -o "${dir}/$(basename ${url})" -d "${dir}"
+            rm "${dir}/$(basename ${url})"
+            printf "\n"
+        done
+    fi
 }
 
 umask 002
