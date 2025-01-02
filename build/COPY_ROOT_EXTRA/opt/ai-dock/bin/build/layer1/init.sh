@@ -7,7 +7,7 @@ PYTHON_PACKAGES=(
 )
 
 NODES=(
-
+)
 
 
 LORA_MODELS=(
