@@ -1,6 +1,7 @@
 version: "3.8"
 # Compose file build variables set in .env
 services:
+
   supervisor:
     platform: linux/amd64
     build:
@@ -31,7 +32,7 @@ services:
               
     volumes:
       ## Workspace
-      - ./workspace:${WORKSPACE:-/workspace/}:rshared
+#      - ./workspace:${WORKSPACE:-/workspace/}:rshared
       # You can share /workspace/storage with other non-ComfyUI containers. See README
       #- /path/to/common_storage:${WORKSPACE:-/workspace/}storage/:rshared
       
