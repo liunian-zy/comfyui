@@ -4,105 +4,50 @@
 
 # Packages are installed after nodes so we can fix them...
 PYTHON_PACKAGES=(
-    "opencv-python==4.7.0.72"
 )
 
 NODES=(
-    #"https://github.com/ltdrdata/ComfyUI-Manager"
-    "https://github.com/Gourieff/comfyui-reactor-node"
-    "https://github.com/WASasquatch/was-node-suite-comfyui"
-    "https://github.com/ltdrdata/ComfyUI-Impact-Pack"
-    "https://github.com/Stability-AI/stability-ComfyUI-nodes"
-    "https://github.com/TripleHeadedMonkey/ComfyUI_MileHighStyler"
-    "https://github.com/Fannovel16/comfyui_controlnet_aux"
-    "https://github.com/chrisgoringe/cg-use-everywhere"
-    "https://github.com/liunian-zy/ComfyUI-CLIPSeg"
-    "https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes"
-    "https://github.com/cubiq/ComfyUI_InstantID"
-    "https://github.com/Derfuu/Derfuu_ComfyUI_ModdedNodes"
-    "https://github.com/sipherxyz/comfyui-art-venture"
-)
+
 
 
 LORA_MODELS=(
-    #"https://civitai.com/api/download/models/16576"
-    "https://static.cjgt.me/comfyui/models/beauty face_v1.safetensors"
-    "https://static.cjgt.me/comfyui/models/leosamsFilmgirlUltra_velvia30Lora.safetensors"
 
 )
 
 VAE_MODELS=(
-    #"https://huggingface.co/stabilityai/sd-vae-ft-ema-original/resolve/main/vae-ft-ema-560000-ema-pruned.safetensors"
-    #"https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors"
-    #"https://huggingface.co/stabilityai/sdxl-vae/resolve/main/sdxl_vae.safetensors"
 )
 
 ESRGAN_MODELS=(
-    #"https://huggingface.co/ai-forever/Real-ESRGAN/resolve/main/RealESRGAN_x4.pth"
-    #"https://huggingface.co/FacehugmanIII/4x_foolhardy_Remacri/resolve/main/4x_foolhardy_Remacri.pth"
-    #"https://huggingface.co/Akumetsu971/SD_Anime_Futuristic_Armor/resolve/main/4x_NMKD-Siax_200k.pth"
 )
 
 CONTROLNET_MODELS=(
-   "https://static.cjgt.me/comfyui/models/diffusion_pytorch_model.safetensors"
 
-    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_canny-fp16.safetensors"
-    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_depth-fp16.safetensors"
-    #"https://huggingface.co/kohya-ss/ControlNet-diff-modules/resolve/main/diff_control_sd15_depth_fp16.safetensors"
-    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_hed-fp16.safetensors"
-    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_mlsd-fp16.safetensors"
-    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_normal-fp16.safetensors"
-    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_openpose-fp16.safetensors"
-    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_scribble-fp16.safetensors"
-    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_seg-fp16.safetensors"
-    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_canny-fp16.safetensors"
-    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_color-fp16.safetensors"
-    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_depth-fp16.safetensors"
-    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_keypose-fp16.safetensors"
-    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_openpose-fp16.safetensors"
-    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_seg-fp16.safetensors"
-    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_sketch-fp16.safetensors"
-    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_style-fp16.safetensors"
 )
 
 UPSCALE_MODELS=(
-    "https://static.cjgt.me/comfyui/models/RealESRGAN_x4plus.pth"
 )
 
 FACE_RESTORE_MODELS=(
-    "https://static.cjgt.me/comfyui/models/GFPGANv1.3.pth"
-    "https://static.cjgt.me/comfyui/models/GFPGANv1.4.pth"
-    "https://static.cjgt.me/comfyui/models/codeformer-v0.1.0.pth"
 )
 FACEDETECTION_MODELS=(
-    "https://static.cjgt.me/comfyui/models/yolov5l-face.pth"
-    "https://static.cjgt.me/comfyui/models/yolov5n-face.pth"
-    "https://static.cjgt.me/comfyui/models/detection_Resnet50_Final.pth"
-    "https://static.cjgt.me/comfyui/models/detection_mobilenet0.25_Final.pth"
-    "https://static.cjgt.me/comfyui/models/parsing_parsenet.pth"
+
 )
 
 
 VAE_MODELS=(
-#  "https://civitai.com/api/download/models/333245?type=Model&format=SafeTensor"
-    "https://static.cjgt.me/comfyui/models/sdxlVAE_sdxlVAE.safetensors"
+
 )
 CHECKPOINT_MODELS=(
-#  "https://civitai.com/api/download/models/273102"
-   "https://static.cjgt.me/comfyui/models/turbovisionxlSuperFastXLBasedOnNew_tvxlV431Bakedvae.safetensors"
+
 )
 INSTANTID_MODELS=(
-   "https://static.cjgt.me/comfyui/models/ip-adapter.bin"
 )
 INSIGHTFACE_MODELS=(
-    "https://static.cjgt.me/comfyui/models/antelopev2.zip"
-    "https://static.cjgt.me/comfyui/models/buffalo_l.zip"
+
 )
 INSIGHTFACE_MODELS_NOZIP=(
-    "https://static.cjgt.me/comfyui/models/inswapper_128.onnx"
 )
 SAM_MODELS=(
-    "https://static.cjgt.me/comfyui/models/sam_vit_b_01ec64.pth"
 )
 ### DO NOT EDIT BELOW HERE UNLESS YOU KNOW WHAT YOU ARE DOING ###
 
